@@ -146,6 +146,11 @@ export class signup extends Component {
                 <CircularProgress size={30} className={classes.progress} />
               )}
             </Button>
+            <Grid item sm>
+              <small className={classes.sign}>
+                Already have an account ? login <Link to="/login">here</Link>
+              </small>
+            </Grid>
           </form>
         </Grid>
         <Grid item sm />

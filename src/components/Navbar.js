@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom/";
 import withStyles from "@material-ui/core/styles/withStyles";
-
+import ENICAR from "../images/logo.png";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import ToolBar from "@material-ui/core/ToolBar";
@@ -27,7 +27,7 @@ export class Navbar extends Component {
         <ToolBar>
           <Typography>
             <Link to="/">
-              <img className={classes.logo} src="../../logo.png" alt="enicar" />
+              <img className={classes.logo} src={ENICAR} alt="enicar" />
             </Link>
           </Typography>
           <span className={classes.menuButton}>

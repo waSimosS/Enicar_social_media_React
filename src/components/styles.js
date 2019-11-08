@@ -37,7 +37,9 @@ const styles = {
   image: {
     minWidth: 100
   },
-  content: {}
+  content: {
+    
+  }
 };
 
 export default styles;
