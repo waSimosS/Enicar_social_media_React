@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import AuthRoute from "./util/AuthRoute";
+import AudhRoute from "./util/AudhRoute";
 import "./App.css";
 //Redux
 import { Provider } from "react-redux";
@@ -14,6 +15,7 @@ import Navbar from "./components/Navbar";
 import theme from "./components/theme";
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 //pages
+import user from "./pages/user";
 import acceuil from "./pages/acceuil";
 import login from "./pages/login";
 import about from "./pages/about";
@@ -45,9 +47,16 @@ function App() {
           <Navbar />
           <div className="container" spacing={16}>
             <Switch>
-              <Route exact path="/" component={acceuil} />
+              <AudhRoute exact path="/" component={acceuil} />
               <AuthRoute exact path="/login" component={login} />
               <AuthRoute exact path="/signup" component={signup} />
+              <Route exact path="/users/:handle" component={user} />
+              <Route exact path="/aboutus" component={about} />
+              <Route
+                exact
+                path="/users/:handle/scream/:screamId"
+                component={user}
+              />
             </Switch>
           </div>
         </Router>

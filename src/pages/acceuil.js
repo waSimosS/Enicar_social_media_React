@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
+import Profile from "../components/profile/Profile";
 //components
-import Scream from "../components/scream";
+import Scream from "../components/scream/Scream";
 
 export class acceuil extends Component {
   state = {
@@ -25,7 +25,9 @@ export class acceuil extends Component {
   }
   render() {
     let recentScreams = this.state.screams ? (
-      this.state.screams.map(scream => <Scream scream={scream} />)
+      this.state.screams.map(scream => (
+        <Scream Scream key={scream.screamId} scream={scream} />
+      ))
     ) : (
       <p>loading....</p>
     );
@@ -37,7 +39,7 @@ export class acceuil extends Component {
             <p>contentt ...</p>
           </Grid>
           <Grid item sm={4} xs={12}>
-            <p>profile</p>
+            <Profile />
           </Grid>
         </Grid>
       </div>

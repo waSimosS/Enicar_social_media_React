@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ENICAR from "../images/téléchargement.png";
-import axios from "axios";
+
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 //Components
@@ -23,9 +23,14 @@ class login extends Component {
     this.state = {
       email: "",
       password: "",
-      loading: "",
       errors: {}
     };
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.UI.errors) {
+      this.setState({ errors: nextProps.UI.errors });
+    }
   }
 
   handleSubmit = event => {
@@ -51,7 +56,7 @@ class login extends Component {
       classes,
       UI: { loading }
     } = this.props;
-    const { errors } = this.props.UI;
+    const { errors } = this.state;
     return (
       <Grid container className={classes.form}>
         <Grid item sm />
@@ -59,7 +64,7 @@ class login extends Component {
         <Grid item sm>
           <img src={ENICAR} alt="Enicar logo" className={classes.Enicar} />
           <Typography variant="h3" className={classes.pageTitle}>
-            Login
+            <b>Login</b>
           </Typography>
           <form noValidate onSubmit={this.handleSubmit}>
             <TextField

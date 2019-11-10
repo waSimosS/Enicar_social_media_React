@@ -5,7 +5,8 @@ import {
   LOADING_UI,
   SET_UNAUTHENTICATED,
   LOADING_USER,
-  MARK_NOTIFICATIONS_READ
+  MARK_NOTIFICATIONS_READ,
+  SET_AUTHENTICATED
 } from "../types";
 import axios from "axios";
 
@@ -17,6 +18,7 @@ export const loginUser = (userData, history) => dispatch => {
       setAuthorizationHeader(res.data.token);
       dispatch(getUserData());
       dispatch({ type: CLEAR_ERRORS });
+      dispatch({ type: SET_AUTHENTICATED });
       history.push("/");
     })
     .catch(err => {
@@ -38,10 +40,13 @@ export const signupUser = (newUserData, history) => dispatch => {
       history.push("/");
     })
     .catch(err => {
-      dispatch({
-        type: SET_ERRORS,
-        payload: err.response.data
-      });
+      if (err.response && err.response.data) {
+        dispatch({
+          type: SET_ERRORS,
+          payload: err.response.data.error
+        });
+      }
+      console.log(err);
     });
 };
 

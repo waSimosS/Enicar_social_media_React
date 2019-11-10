@@ -12,6 +12,10 @@ import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import styles from "../components/styles";
 import validateSignupData from "../Validators/validators";
+import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
+import CloseIcon from "@material-ui/icons/Close";
+import MyButton from "../util/MyButton";
 
 export class signup extends Component {
   constructor() {
@@ -21,7 +25,8 @@ export class signup extends Component {
       lastName: "",
       email: "",
       confirmEmail: "",
-      errors: {}
+      errors: {},
+      open: false
     };
   }
 
@@ -53,9 +58,9 @@ export class signup extends Component {
       .then(res => {
         console.log(res.data);
         this.setState({
-          loading: false
+          loading: false,
+          open: true
         });
-        this.props.history.push("/");
       })
       .catch(err => {
         this.setState({
@@ -71,6 +76,11 @@ export class signup extends Component {
     });
   };
 
+  handleClose = () => {
+    this.setState({ open: false });
+    this.props.history.push("/");
+  };
+
   render() {
     const { classes } = this.props;
     const { errors, loading } = this.state;
@@ -81,7 +91,7 @@ export class signup extends Component {
         <Grid item sm>
           <img src={ENICAR} alt="Enicar logo" className={classes.Enicar} />
           <Typography variant="h3" className={classes.pageTitle}>
-            Sign up
+            <b>Sign up</b>
           </Typography>
           <form noValidate onSubmit={this.handleSubmit}>
             <TextField
@@ -146,6 +156,29 @@ export class signup extends Component {
                 <CircularProgress size={30} className={classes.progress} />
               )}
             </Button>
+            <Dialog
+              open={this.state.open}
+              onClose={this.handleClose}
+              fullWidth
+              maxWidth="sm"
+            >
+              <MyButton
+                tip="Close"
+                onClick={this.handleClose}
+                tipClassName={classes.closeButton}
+              >
+                <CloseIcon />
+              </MyButton>
+              <DialogContent>
+                <h3>
+                  Thank you for signing up! we will send you confirmatiom email
+                  after verifying your identity
+                </h3>
+              </DialogContent>
+              <Button onClick={this.handleClose} coloor="inherit">
+                OK !
+              </Button>
+            </Dialog>
             <Grid item sm>
               <small className={classes.sign}>
                 Already have an account ? login <Link to="/login">here</Link>
