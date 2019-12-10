@@ -6,13 +6,10 @@ export class about extends Component {
     return (
       <Grid container>
         <Grid item>
-          <h1>binjouur</h1>
-        </Grid>
-        <Grid item>
-          <img src="../../enicar1.png" alt="enicar"></img>
-        </Grid>
-        <Grid item>
-          <h1>binjouur</h1>
+          <h1>
+            Welcome to Enicar social media ! our site is still under
+            construction
+          </h1>
         </Grid>
       </Grid>
     );

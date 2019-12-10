@@ -10,6 +10,7 @@
     "dayjs": "^1.8.17",
     "jquery": "^1.9.1",
     "jwt-decode": "^2.2.0",
+    "live-server": "^1.2.1",
     "popper.js": "^1.12.9",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",

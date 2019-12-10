@@ -36,7 +36,7 @@ export class acceuil extends Component {
         <Grid container>
           <Grid item sm={8} xs={12}>
             {recentScreams}
-            <p>contentt ...</p>
+            
           </Grid>
           <Grid item sm={4} xs={12}>
             <Profile />
